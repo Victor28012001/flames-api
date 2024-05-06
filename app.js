@@ -2,7 +2,11 @@ const express = require('express');
 require('dotenv').config();
 const axios = require('axios');
 const connectDB = require('./config/db');
-const routes = require("./routes/api/members");
+const members = require("./routes/api/members");
+const contacted = require("./routes/api/contacted");
+const pastservices = require("./routes/api/pastservices");
+const services = require("./routes/api/services");
+const programs = require("./routes/api/programs");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -19,7 +23,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // use the routes module as a middleware
 // for the /api/books path
-app.use("/api/members", routes);
+app.use("/api/members", members);
+app.use("/api/contacted", contacted);
+app.use("/api/pastservices", pastservices);
+app.use("/api/services", services);
+app.use("/api/programs", programs);
 
 
 // Connect Database
